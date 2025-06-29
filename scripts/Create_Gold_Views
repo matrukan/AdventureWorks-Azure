@@ -1,5 +1,5 @@
 ------------------------
--- CREATE VIEW CALENDAR
+CREATE VIEW CALENDAR
 ------------------------
 CREATE VIEW gold.calendar
 AS
@@ -10,11 +10,11 @@ FROM
         (
             BULK 'https://awstoragedatalake.blob.core.windows.net/silver/AdventureWorks_Calendar/',
             FORMAT = 'PARQUET'
-        ) as QUER1
+        ) as QUERY1
 
 
 ------------------------
--- CREATE VIEW CUSTOMERS
+CREATE VIEW CUSTOMERS
 ------------------------
 CREATE VIEW gold.customers
 AS
@@ -25,12 +25,12 @@ FROM
         (
             BULK 'https://awstoragedatalake.blob.core.windows.net/silver/AdventureWorks_Customers/',
             FORMAT = 'PARQUET'
-        ) as QUER1
+        ) as QUERY1
 
 
 
 ------------------------
--- CREATE VIEW PRODUCTS
+CREATE VIEW PRODUCTS
 ------------------------
 CREATE VIEW gold.products
 AS
@@ -41,26 +41,11 @@ FROM
         (
             BULK 'https://awstoragedatalake.blob.core.windows.net/silver/AdventureWorks_Products/',
             FORMAT = 'PARQUET'
-        ) as QUER1
+        ) as QUERY1
 
 
 ------------------------
--- CREATE VIEW RETURNS
-------------------------
-CREATE VIEW gold.returns
-AS
-SELECT 
-    * 
-FROM 
-    OPENROWSET
-        (
-            BULK 'https://awstoragedatalake.blob.core.windows.net/silver/AdventureWorks_Returns/',
-            FORMAT = 'PARQUET'
-        ) as QUER1
-        
-
-------------------------
--- CREATE VIEW RETURNS
+CREATE VIEW RETURNS
 ------------------------
 CREATE VIEW gold.returns
 AS
@@ -71,11 +56,22 @@ FROM
         (
             BULK 'https://awstoragedatalake.blob.core.windows.net/silver/AdventureWorks_Returns/',
             FORMAT = 'PARQUET'
-        ) as QUER1
-
-
-    ------------------------
--- CREATE VIEW SALES
+        ) as QUERY1
+------------------------
+CREATE VIEW CATEGORIES
+------------------------
+CREATE VIEW gold.sales
+AS
+SELECT 
+    * 
+FROM 
+    OPENROWSET
+        (
+            BULK 'https://awstoragedatalake.blob.core.windows.net/silver/AdventureWorks_Product_Categories/',
+            FORMAT = 'PARQUET'
+        ) as QUERY1       
+------------------------
+CREATE VIEW SALES
 ------------------------
 CREATE VIEW gold.sales
 AS
@@ -86,11 +82,11 @@ FROM
         (
             BULK 'https://awstoragedatalake.blob.core.windows.net/silver/AdventureWorks_Sales/',
             FORMAT = 'PARQUET'
-        ) as QUER1
+        ) as QUERY1
 
 
 ------------------------
--- CREATE VIEW SUBCAT
+CREATE VIEW SUBCAT
 ------------------------
 CREATE VIEW gold.subcat
 AS
@@ -101,12 +97,12 @@ FROM
         (
             BULK 'https://awstoragedatalake.blob.core.windows.net/silver/AdventureWorks_SUbCategories/',
             FORMAT = 'PARQUET'
-        ) as QUER1
+        ) as QUERY1
 
 
 
 ------------------------
--- CREATE VIEW TERRITORIES
+CREATE VIEW TERRITORIES
 ------------------------
 CREATE VIEW gold.territories
 AS
@@ -117,4 +113,4 @@ FROM
         (
             BULK 'https://awstoragedatalake.blob.core.windows.net/silver/AdventureWorks_Territories/',
             FORMAT = 'PARQUET'
-        ) as QUER1
+        ) as QUERY1
